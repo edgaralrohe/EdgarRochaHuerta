@@ -1,0 +1,385 @@
+<title>GTM Tycoon Art Bible</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,550&family=Hanken+Grotesk:wght@400;500;700&family=Press+Start+2P&family=VT323&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an editorial reference document (max 1120px) on Apollo-style cream paper; pixel specimens sit inside it as framed plates. Single deliberate light look. */
+:root{
+  --marble:#f7f5f2; --limestone:#ccc9c6; --pebble:#736f6c; --graphite:#47423d; --ink:#1a1a1a;
+  --indigo:#3f3653; --volt:#ebf212; --signal:#e2582f; --paper:#ffffff; --line:#e3e0db;
+  --display:'Fraunces', Georgia, serif; --body:'Hanken Grotesk', system-ui, sans-serif; --mono:'IBM Plex Mono', ui-monospace, monospace;
+  --px:'Press Start 2P','Courier New',monospace; --vt:'VT323','Courier New',monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--marble); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.55}
+.wrap{max-width:1120px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:40px 80px}
+h1,h2,h3{font-family:var(--display); font-weight:550; letter-spacing:-0.01em; margin:0; text-wrap:balance}
+h1{font-size:clamp(40px,7vw,80px); line-height:1}
+h2{font-size:clamp(26px,3.6vw,38px); line-height:1.1}
+h3{font-size:20px}
+p{margin:0}
+.eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--indigo)}
+.lede{font-size:20px; max-width:62ch; color:var(--graphite); margin-top:18px}
+section{padding-top:64px; margin-top:64px; border-top:1px solid var(--line); display:grid; gap:22px}
+.sub{color:var(--graphite); max-width:68ch}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))} .g3{grid-template-columns:repeat(3,minmax(0,1fr))} .g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:20px}
+.plate{background:var(--ink); border-radius:8px; padding:18px; display:flex; align-items:center; justify-content:center; min-height:120px}
+.plate.light{background:var(--marble); border:1px solid var(--line)}
+canvas{image-rendering:pixelated; display:block; max-width:100%}
+.mono{font-family:var(--mono); font-size:13px; color:var(--pebble)}
+.hl{background:var(--volt); padding:0 4px}
+/* Palette */
+.sw{border-radius:8px; overflow:hidden; border:1px solid var(--line); background:var(--paper)}
+.sw .chip{height:84px}
+.sw .meta{padding:10px 12px; display:grid; gap:2px}
+.sw b{font-weight:700} .sw code{font-family:var(--mono); font-size:12px; color:var(--pebble)}
+.sw span{font-size:13px; color:var(--graphite)}
+.ramp{display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+.ramp i{width:40px; height:40px; border-radius:4px; border:1px solid var(--line); display:inline-block}
+/* Type specimens */
+.spec{display:grid; gap:6px}
+.spec .px{font-family:var(--px); font-size:14px; line-height:1.6}
+.spec .vt{font-family:var(--vt); font-size:30px; line-height:1}
+.spec .ed{font-family:var(--display); font-weight:550; font-size:34px; line-height:1.05}
+/* Layers diagram */
+.layers{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+.layer{border-radius:8px; padding:20px; display:grid; gap:10px}
+.layer.world{background:var(--ink); color:var(--marble)}
+.layer.world h3{font-family:var(--px); font-weight:400; font-size:14px; line-height:1.6; color:var(--volt)}
+.layer.world p{font-family:var(--vt); font-size:24px; line-height:1.1}
+.layer.desk{background:var(--paper); border:1px solid var(--line)}
+/* Sprites */
+.sprites{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px}
+.sprite{background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:14px; display:grid; gap:8px; justify-items:center; text-align:center}
+.sprite .stage{background:var(--limestone); border-radius:4px; width:100%; display:flex; justify-content:center; padding:10px 0}
+.sprite b{font-size:14px} .sprite small{font-size:13px; color:var(--graphite)}
+.badge{font-family:var(--px); font-size:8px; background:var(--ink); color:var(--marble); padding:4px 6px; line-height:1.2}
+/* UI components */
+.dialog{background:var(--marble); border:4px solid var(--ink); box-shadow:inset 0 0 0 3px var(--marble), inset 0 0 0 5px var(--pebble); padding:16px 18px 14px; position:relative; font-family:var(--vt); font-size:26px; line-height:1.05; max-width:520px}
+.dialog .name{position:absolute; top:-14px; left:14px; font-family:var(--px); font-size:9px; background:var(--ink); color:var(--volt); padding:5px 8px}
+.dialog .next{position:absolute; right:12px; bottom:6px; font-size:16px; animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.hud{background:var(--ink); color:var(--marble); display:flex; gap:20px; align-items:center; padding:12px 16px; font-family:var(--px); font-size:10px; flex-wrap:wrap; border-radius:4px}
+.hud .v{color:var(--volt)}
+.hud .bar{width:120px; height:10px; border:2px solid var(--marble); position:relative}
+.hud .bar i{position:absolute; inset:0; width:62%; background:repeating-linear-gradient(90deg,var(--volt) 0 5px,transparent 5px 7px)}
+.memo{background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:26px 28px; max-width:460px; display:grid; gap:12px; box-shadow:6px 6px 0 var(--limestone)}
+.memo .from{font-family:var(--mono); font-size:12px; color:var(--pebble); display:flex; justify-content:space-between}
+.memo h3{font-size:26px}
+.memo p{color:var(--graphite)}
+.memo .rule{border-top:1px solid var(--line); padding-top:12px; font-weight:700}
+.memo .stamp{justify-self:end; font-family:var(--px); font-size:9px; border:3px solid var(--signal); color:var(--signal); padding:6px 8px; transform:rotate(-6deg)}
+.upg{width:190px; background:var(--marble); border:4px solid var(--ink); box-shadow:5px 5px 0 var(--indigo); padding:12px; display:grid; gap:8px; justify-items:center; text-align:center}
+.upg .rar{font-family:var(--px); font-size:8px; width:100%; display:flex; justify-content:space-between; gap:8px}
+.upg h4{margin:0; font-family:var(--px); font-weight:400; font-size:10px; line-height:1.6}
+.upg p{font-family:var(--vt); font-size:21px; line-height:1}
+.upg.rare{box-shadow:5px 5px 0 var(--volt)}
+.battle{background:var(--marble); border:4px solid var(--ink); padding:10px 12px; width:280px; display:grid; gap:6px}
+.battle .n{font-family:var(--px); font-size:10px; display:flex; justify-content:space-between}
+.battle .lb{font-family:var(--px); font-size:8px; display:flex; justify-content:space-between}
+.battle .b{height:12px; border:3px solid var(--ink)} .battle .b i{display:block; height:100%; width:38%; background:repeating-linear-gradient(90deg,var(--signal) 0 5px,transparent 5px 7px)}
+.battle .pat{display:flex; gap:3px; font-family:var(--px); font-size:8px; align-items:center} .battle .pat s{width:8px; height:8px; background:var(--ink); display:inline-block} .battle .pat s.off{background:var(--limestone)}
+.btnpx{font-family:var(--px); font-size:10px; background:var(--ink); color:var(--marble); border:4px solid var(--ink); box-shadow:4px 4px 0 var(--pebble); padding:12px 16px; display:inline-block}
+.btnpx.v{background:var(--volt); color:var(--ink)}
+/* Do / don't */
+.dd{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+.dd ul{margin:10px 0 0; padding-left:18px; display:grid; gap:8px}
+.do{border-top:4px solid var(--ink)} .dont{border-top:4px solid var(--signal)}
+.voice{display:grid; gap:10px}
+.voice div{display:grid; grid-template-columns:150px minmax(0,1fr); gap:12px; border-top:1px solid var(--line); padding-top:10px}
+.voice b{font-family:var(--mono); font-weight:500; font-size:12px; color:var(--pebble); letter-spacing:.06em}
+.voice q{font-family:var(--vt); font-size:24px; line-height:1.1; quotes:none}
+.map-wrap{background:var(--ink); border-radius:8px; padding:14px; overflow-x:auto}
+.legend{display:flex; gap:16px; flex-wrap:wrap; font-size:14px; color:var(--graphite)}
+.legend span::before{content:""; display:inline-block; width:12px; height:12px; margin-right:6px; vertical-align:-1px; background:var(--c)}
+footer{margin-top:64px; color:var(--pebble); font-size:14px}
+@media (max-width:800px){ .g2,.g3,.g4,.layers,.dd{grid-template-columns:minmax(0,1fr)} .voice div{grid-template-columns:minmax(0,1fr)} }
+@media (prefers-reduced-motion:reduce){ *{animation:none!important} }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">GTM Tycoon · Visual direction v1 · For the Claude Code build</div>
+    <h1 style="margin-top:14px">Apollo, <span class="hl">in 8 bits.</span></h1>
+    <p class="lede">A pixel-art world that still feels like Apollo: warm, mostly monochrome, with one switched-on yellow that only lights up when something is good or active. The game and the brand share one rule: color is rationed, so the moments that matter glow.</p>
+  </header>
+
+  <section>
+    <div class="eyebrow">01 · Two layers</div>
+    <h2>The world is pixel. The desk is Apollo.</h2>
+    <p class="sub">Every screen belongs to one of two layers. The split keeps the arcade fun and makes the "work" moments feel like the real product, which is where the brand shows up most.</p>
+    <div class="layers">
+      <div class="layer world"><h3>WORLD LAYER</h3><p>Map, arcade, battles, HUD, dialog. Pixel font, 8-color palette, hard edges, step animations, no smooth gradients.</p><p style="color:var(--limestone)">Where: Inbox Plaza, Client District, gym, battles.</p></div>
+      <div class="layer desk"><h3>Desk layer</h3><p class="sub">Memos, end-of-day results, upgrade choices, the persona directory. Editorial serif + clean sans on cream paper, like an Apollo document. Pixel art appears only as small inserts.</p><p class="mono">Where: the Office, results screens, title screen copy.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">02 · Palette</div>
+    <h2>Eight colors. One of them glows.</h2>
+    <p class="sub">The six neutrals and indigo come from Apollo's public palette. Volt is Apollo's yellow-green accent. Signal is the only color added for the game, and it is reserved for mistakes.</p>
+    <div class="grid g4" id="palette"></div>
+    <div class="card" style="display:grid; gap:10px">
+      <h3>Skin ramp (the one exception)</h3>
+      <p class="sub">A strict palette would make every character the same tone. Characters use one of three warm skin tones so the cast reads as diverse.</p>
+      <div class="ramp"><i style="background:#f0d9c0"></i><i style="background:#c99a72"></i><i style="background:#8a5f42"></i><span class="mono">#f0d9c0 · #c99a72 · #8a5f42</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">03 · Type</div>
+    <h2>Three voices, each with one job.</h2>
+    <div class="grid g3">
+      <div class="card spec"><div class="mono">PRESS START 2P · HUD, buttons, labels</div><div class="px">LV2 · 09:40 AM</div><div class="px" style="font-size:10px">DEAL SIGNED</div><p class="sub" style="font-size:14px">Max 3 words on screen during arcade play. Uppercase only.</p></div>
+      <div class="card spec"><div class="mono">VT323 · dialog, coach lines</div><div class="vt">"Executives buy impact, not features."</div><p class="sub" style="font-size:14px">Sentence case. One sentence per box.</p></div>
+      <div class="card spec"><div class="mono">FRAUNCES 550 + HANKEN · desk layer</div><div class="ed">Today's memo</div><p>Substitutes for Apollo's licensed faces (Season Mix, Söhne).</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">04 · Cast</div>
+    <h2>Original characters, built from a 24 × 30 grid.</h2>
+    <p class="sub">Sprites are generated by code from a grid, so Claude Code can add new people without an artist. Buyer types are shown with a symbol badge plus a word, never by color alone.</p>
+    <div class="sprites" id="cast"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">05 · Lead icons</div>
+    <h2>Readable in half a second.</h2>
+    <p class="sub">Used in the arcade (Pipeline Panic) and on the map. Good leads are always the volt bag; everything else is drawn in neutrals. The icon's size is the company's size.</p>
+    <div class="sprites" id="icons"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">06 · Platform powers</div>
+    <h2>The product shows up as power-ups.</h2>
+    <p class="sub">Apollo's features are the items you find and the cards you pick. They are drawn as generic pixel icons for now. Once Apollo approves using the brand, they switch to the real symbol with a single flag (<code class="mono">BRAND_MODE</code>).</p>
+    <div class="sprites" id="powers"></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">07 · The map</div>
+    <h2>One screen. A whole workday.</h2>
+    <p class="sub">A warm, monochrome city: no green grass, no tall grass. Streets are the "pipeline", lit windows are volt, and the leads you caught in the morning appear as people in the Client District. Tiles are 16 px, drawn ×2.</p>
+    <div class="map-wrap"><canvas id="map" width="640" height="448" aria-label="Sample hub map: Office, Inbox Plaza, Client District and Gym"></canvas></div>
+    <div class="legend">
+      <span style="--c:var(--volt)">Volt: things you can use now</span>
+      <span style="--c:var(--indigo)">Indigo: the Office (your HQ)</span>
+      <span style="--c:var(--graphite)">Graphite: buildings, trees</span>
+      <span style="--c:var(--limestone)">Limestone: streets</span>
+      <span style="--c:var(--signal)">Signal: only errors</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">08 · Interface parts</div>
+    <h2>The kit Claude Code builds with.</h2>
+    <div class="grid g2">
+      <div class="card" style="display:grid; gap:14px"><div class="mono">HUD · world layer</div>
+        <div class="hud"><span>09:40 AM</span><span>CASH <span class="v">$18,500</span></span><span>DAY 2</span><span>ENERGY</span><span class="bar"><i></i></span></div>
+        <div class="mono" style="margin-top:6px">Dialog · world layer</div>
+        <div class="dialog" style="margin-top:12px"><span class="name">MARIANA · CO-FOUNDER</span>Only online stores with 50 to 500 people today. Go.<span class="next">▼</span></div>
+      </div>
+      <div class="card" style="display:grid; gap:14px; justify-items:start"><div class="mono">Battle card · world layer</div>
+        <div class="battle"><div class="n"><span>LUCIA RIOS</span><span>CFO</span></div><div style="display:flex; gap:6px; align-items:center"><span class="badge">$ VISIONARY</span><span class="pat">PAT <s></s><s></s><s></s><s class="off"></s><s class="off"></s></span></div><div class="lb"><span>RESIST</span><span>18/48</span></div><div class="b"><i></i></div></div>
+        <div class="mono">Buttons</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap"><span class="btnpx">▶ NEXT CALL</span><span class="btnpx v">INVITE ×2</span></div>
+      </div>
+      <div class="card" style="display:grid; gap:14px; justify-items:start"><div class="mono">Memo · desk layer</div>
+        <div class="memo"><div class="from"><span>FROM: MARIANA</span><span>DAY 3 · 6:00 PM</span></div><h3>Tomorrow, clean data only.</h3><p>Two calls today went nowhere because the emails bounced. Starting tomorrow, skip any lead without a working email.</p><p class="rule">New rule: bounced or duplicate leads are out.</p><span class="stamp">NEW RULE</span></div>
+      </div>
+      <div class="card" style="display:grid; gap:14px"><div class="mono">Upgrade cards · desk layer, pick 1 of 3</div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap" id="cards"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">09 · Voice</div>
+    <h2>Talks like Apollo: short, direct, confident.</h2>
+    <div class="voice">
+      <div><b>COACH, CORRECT</b><q>Executives buy impact. Lead with the number.</q></div>
+      <div><b>COACH, MISTAKE</b><q>A receptionist can't buy. Find the manager.</q></div>
+      <div><b>ARCADE POP-UPS</b><q>TOO SMALL · BOUNCED · DEAL SIGNED · x3 COMBO</q></div>
+      <div><b>MEMO</b><q>Run your day like a system, not a to-do list.</q></div>
+      <div><b>RESULTS</b><q>Six deals, two dead ends. Your most common miss: bad data.</q></div>
+    </div>
+    <p class="sub">No exclamation-mark hype, no jargon without a picture, no blaming the player. Every line fits in one dialog box.</p>
+  </section>
+
+  <section>
+    <div class="eyebrow">10 · Rules</div>
+    <h2>Do and don't.</h2>
+    <div class="dd">
+      <div class="card do"><h3>Do</h3><ul>
+        <li>Use volt only for "good", "active" or "ready". If everything glows, nothing does.</li>
+        <li>Use signal only for mistakes and errors.</li>
+        <li>Pair every color cue with a shape or a word (buyer badges, ✓/✗ marks).</li>
+        <li>Use flat color and 4 px hard drop shadows. Animate in steps.</li>
+        <li>Keep arcade text to 3 words; put explanations in dialog or the desk layer.</li>
+        <li>Respect reduced motion: no shake or flash when it is on.</li>
+      </ul></div>
+      <div class="card dont"><h3>Don't</h3><ul>
+        <li>No Pokémon names, creatures, balls, tall grass, sounds or exact screen layouts. We borrow the genre, never the assets.</li>
+        <li>No Apollo logo, star symbol or product screenshots until Apollo approves. Until then, say "the platform".</li>
+        <li>No gradients, soft shadows, or cool blue-grays: the palette stays warm.</li>
+        <li>No real customer or prospect data. All companies and people are fictional.</li>
+        <li>No green grass or nature palette: the city is warm monochrome.</li>
+      </ul></div>
+    </div>
+  </section>
+
+  <footer>GTM Tycoon visual direction v1 · Apollo palette and tone taken from the public apollo.io site; typefaces are open substitutes for Apollo's licensed fonts. All characters, icons and tiles are original and generated by code.</footer>
+</div>
+
+<script>
+(function(){
+const P={marble:'#f7f5f2', limestone:'#ccc9c6', pebble:'#736f6c', graphite:'#47423d', ink:'#1a1a1a', indigo:'#3f3653', volt:'#ebf212', signal:'#e2582f'};
+const SKIN=['#f0d9c0','#c99a72','#8a5f42'];
+
+/* ---------- Palette ---------- */
+const PAL=[
+  ['Marble','marble','Paper, highlights, text on dark','Apollo'],['Limestone','limestone','Streets, silhouettes, empty bars','Apollo'],
+  ['Pebble','pebble','Secondary text, shading','Apollo'],['Graphite','graphite','Buildings, trees, outlines on light','Apollo'],
+  ['Ink','ink','Outlines, world background, body text','Apollo'],['Indigo','indigo','Your Office, rare accents, card shadows','Apollo'],
+  ['Volt','volt','Good, active, ready. Nothing else.','Apollo accent'],['Signal','signal','Mistakes and errors only','Game only']
+];
+document.getElementById('palette').innerHTML=PAL.map(([n,k,role,src])=>`<div class="sw"><div class="chip" style="background:${P[k]}"></div><div class="meta"><b>${n}</b><code>${P[k]} · ${src}</code><span>${role}</span></div></div>`).join('');
+
+/* ---------- Pixel helpers ---------- */
+function canvasFor(w,h,scale){ const c=document.createElement('canvas'); c.width=w*scale; c.height=h*scale; const x=c.getContext('2d'); x.imageSmoothingEnabled=false; x.scale(scale,scale); return [c,x]; }
+function personGrid(o){
+  const W=24,H=30,g=[...Array(H)].map(()=>Array(W).fill(null));
+  for(let y=0;y<H;y++) for(let x=0;x<W;x++){
+    const hx=(x+.5-12)/5.6, hy=(y+.5-9)/6.4;
+    if(hx*hx+hy*hy<=1){ let c='s'; if(o.back) c='h'; else if(y<6) c='h'; else if(y<8&&(x<9||x>14)) c='h'; else if((o.hair==='long'||o.hair==='short')&&y<11&&(x<8||x>15)) c='h'; g[y][x]=c; }
+    if(o.hair==='bun'){ if(Math.hypot(x+.5-12,y+.5-2)<2.6) g[y][x]='h'; }
+    if(o.hair==='cap' && y>=2 && y<=5 && x>=6 && x<=18) g[y][x]='p';
+    if(o.hair==='cap' && y===5 && x>=12 && x<=20) g[y][x]='p';
+    if(o.hair==='long'&&!o.back&&y>=9&&y<=19&&(x===6||x===7||x===16||x===17)) g[y][x]='h';
+    if(y===15&&x>=10&&x<=13) g[y][x]=o.back?'h':'s';
+    const body=y>=16&&y<=H-2&&x>=5&&x<=18&&!(y===16&&(x<7||x>16))&&!(y===17&&(x<6||x>17));
+    if(body&&g[y][x]!=='h') g[y][x]='w';
+    if(body&&!o.back){ const off=Math.abs(x+.5-12), lim=(21-y)*0.7; if(y<=20&&off<=lim&&off>lim-1.6) g[y][x]='c'; }
+    if(o.tie && !o.back && body && x>=11 && x<=12 && y>=18 && y<=24) g[y][x]='t';
+    if(!o.back&&body&&x===12&&y>=21&&!o.tie) g[y][x]='k';
+  }
+  if(!o.back){ g[10][9]='k'; g[10][14]='k'; g[13][11]='m'; g[13][12]='m'; }
+  const out=g.map(r=>r.slice());
+  for(let y=0;y<H;y++) for(let x=0;x<W;x++){ if(g[y][x]) continue; if((g[y-1]&&g[y-1][x])||(g[y+1]&&g[y+1][x])||g[y][x-1]||g[y][x+1]) out[y][x]='k'; }
+  if(o.unknown){ for(let y=0;y<H;y++) for(let x=0;x<W;x++) if(out[y][x]&&out[y][x]!=='k') out[y][x]='u'; ['.kkk.','k...k','....k','..kk.','..k..','.....','..k..'].forEach((r,dy)=>[...r].forEach((ch,dx)=>{ if(ch==='k') out[5+dy][10+dx]='q'; })); }
+  return out;
+}
+function drawGrid(ctx,grid,colors,ox,oy){ grid.forEach((row,y)=>row.forEach((c,x)=>{ if(c){ ctx.fillStyle=colors[c]; ctx.fillRect(ox+x,oy+y,1,1); } })); }
+function personColors(o){ return {k:P.ink, s:SKIN[o.skin||0], m:'#00000030', h:o.hairC||P.ink, w:o.shirt||P.graphite, c:P.marble, u:P.pebble, q:P.marble, p:o.capC||P.volt, t:o.tieC||P.signal}; }
+function spriteCanvas(o,scale){ const [c,x]=canvasFor(24,30,scale); drawGrid(x,personGrid(o),personColors(o),0,0); return c; }
+
+/* ---------- Cast ---------- */
+const CAST=[
+  {name:'You', note:'New rep. Volt cap = the player, always.', o:{hair:'cap', skin:1, shirt:P.indigo, hairC:P.ink}},
+  {name:'Mariana', note:'Co-founder. Gives the memos.', o:{hair:'bun', skin:2, shirt:P.indigo, hairC:P.ink}},
+  {name:'Rival rep', note:'Competitor. Challenges you on the street.', o:{hair:'short', skin:0, shirt:P.ink, hairC:P.graphite, tie:true}},
+  {name:'Lucia · CFO', note:'Visionary buyer', badge:'$ VISIONARY', o:{hair:'long', skin:1, shirt:P.ink, hairC:P.ink}},
+  {name:'Diego · Head of IT', note:'Technical buyer', badge:'# TECHNICAL', o:{hair:'short', skin:2, shirt:P.graphite, hairC:P.ink}},
+  {name:'Sofia · Ops', note:'Operator buyer', badge:'+ OPERATOR', o:{hair:'bun', skin:0, shirt:P.pebble, hairC:P.graphite}},
+  {name:'Paola · Purchasing', note:'Gatekeeper buyer', badge:'! GATEKEEPER', o:{hair:'long', skin:2, shirt:P.marble, hairC:P.graphite}},
+  {name:'Unknown lead', note:'Low visibility: bad or missing data', badge:'TYPE ???', o:{hair:'short', unknown:true}}
+];
+const castEl=document.getElementById('cast');
+CAST.forEach(ch=>{ const d=document.createElement('div'); d.className='sprite'; const st=document.createElement('div'); st.className='stage'; st.appendChild(spriteCanvas(ch.o,4)); d.appendChild(st); d.insertAdjacentHTML('beforeend', `${ch.badge?`<span class="badge">${ch.badge}</span>`:''}<b>${ch.name}</b><small>${ch.note}</small>`); castEl.appendChild(d); });
+
+/* ---------- Lead icons (same family as Pipeline Panic) ---------- */
+function R(x,X,y,w,h,c){ x.fillStyle=c; x.fillRect(Math.round(X),Math.round(y),Math.round(w),Math.round(h)); }
+function bag(x,cx,cy,u,ghost){ x.save(); if(ghost) x.globalAlpha=.4; R(x,cx-u*2,cy-u*5,u*.8,u*2.4,P.marble); R(x,cx+u*1.2,cy-u*5,u*.8,u*2.4,P.marble); R(x,cx-u*2,cy-u*5.6,u*4,u*.8,P.marble); R(x,cx-u*4.5,cy-u*2.8,u*9,u*7.8,P.volt); R(x,cx-u*4.5,cy-u*2.8,u*9,u*.8,P.marble); R(x,cx-u*2,cy+u*.2,u*.9,u*.9,P.ink); R(x,cx+u*1.1,cy+u*.2,u*.9,u*.9,P.ink); R(x,cx-u*1.4,cy+u*2,u*2.8,u*.7,P.ink); x.restore(); }
+function icon(kind){
+  const [c,x]=canvasFor(110,90,1); const cx=55, cy=50, u=4;
+  R(x,0,0,110,90,P.ink);
+  if(kind==='store') bag(x,cx,cy,u);
+  if(kind==='tiny') bag(x,cx,cy+8,u*.55);
+  if(kind==='giant') bag(x,cx,cy+4,u*1.35);
+  if(kind==='bounced'){ bag(x,cx,cy,u); R(x,cx+u*2,cy-u*6.5,u*3.2,u*3.2,P.signal); R(x,cx+u*3.2,cy-u*6,u*.8,u*1.4,P.marble); R(x,cx+u*3.2,cy-u*4.2,u*.8,u*.6,P.marble); }
+  if(kind==='dupe'){ bag(x,cx+u*2,cy-u*1.5,u,true); bag(x,cx,cy,u); }
+  if(kind==='bank'){ R(x,cx-u*5,cy-u*2,u*10,u*1.5,P.pebble); for(let i=0;i<4;i++) R(x,cx-u*4.2+i*u*2.6,cy-u*.5,u*1.2,u*4,P.marble); R(x,cx-u*5.5,cy+u*3.5,u*11,u*1.5,P.pebble); for(let i=0;i<4;i++){ const w=u*(10-i*2.6); R(x,cx-w/2,cy-u*(2.8+i*.9),w,u*.9,P.pebble); } }
+  if(kind==='factory'){ R(x,cx-u*5,cy-u,u*10,u*6,P.pebble); for(let i=0;i<3;i++) for(let j=0;j<3;j++) R(x,cx-u*5+i*u*3.33+j*u,cy-u-(j+1)*u,u*(3.33-j),u,P.pebble); R(x,cx+u*2.6,cy-u*6,u*1.6,u*5,P.graphite); [-3.6,-.8,2].forEach(o=>R(x,cx+u*o,cy+u,u*1.6,u*1.6,P.ink)); R(x,cx+u*3,cy-u*8,u*1.4,u*1.2,P.graphite); }
+  if(kind==='hospital'){ R(x,cx-u*5,cy-u*4,u*10,u*9,P.marble); R(x,cx-u,cy-u*3,u*2,u*5,P.signal); R(x,cx-u*2.5,cy-u*1.5,u*5,u*2,P.signal); }
+  if(kind==='mystery'){ R(x,cx-u*5,cy-u*5,u*10,u*10,P.graphite); x.strokeStyle=P.marble; x.lineWidth=2; x.strokeRect(cx-u*5,cy-u*5,u*10,u*10); R(x,cx-u*2,cy-u*3.5,u*4,u,P.marble); R(x,cx+u*1.5,cy-u*3,u,u*2,P.marble); R(x,cx-u*.5,cy-u,u*2,u,P.marble); R(x,cx-u*.5,cy,u,u*1.5,P.marble); R(x,cx-u*.5,cy+u*2.2,u,u,P.marble); }
+  return c;
+}
+const ICONS=[['store','Good lead','Online store, right size, clean data'],['bank','Not ICP','Wrong industry (bank, factory, hospital)'],['factory','Not ICP','Wrong industry'],['hospital','Not ICP','Wrong industry'],['tiny','Too small','Size is drawn literally'],['giant','Too big','Enterprise: slow deals'],['bounced','Bounced','Blinking signal badge'],['dupe','Duplicate','Ghost copy behind'],['mystery','Unknown','Reveals mid-fall or with Enrich']];
+const iconsEl=document.getElementById('icons');
+ICONS.forEach(([k,n,d])=>{ const el=document.createElement('div'); el.className='sprite'; el.appendChild(icon(k)); el.insertAdjacentHTML('beforeend',`<b>${n}</b><small>${d}</small>`); iconsEl.appendChild(el); });
+
+/* ---------- Platform powers ---------- */
+function power(kind){
+  const [c,x]=canvasFor(90,90,1); R(x,0,0,90,90,P.ink); const cx=45, cy=45;
+  R(x,cx-30,cy-30,60,60,P.graphite); x.strokeStyle=P.volt; x.lineWidth=3; x.strokeRect(cx-30,cy-30,60,60);
+  const V=P.volt, M=P.marble;
+  if(kind==='enrich'){ R(x,cx-2,cy-22,8,18,V); R(x,cx-10,cy-6,20,6,V); R(x,cx-6,cy,8,20,V); }
+  if(kind==='intent'){ for(let r=0;r<3;r++){ x.strokeStyle= r===0?V:M; x.lineWidth=3; x.beginPath(); x.arc(cx,cy+12,8+r*8,Math.PI*1.15,Math.PI*1.85); x.stroke(); } R(x,cx-3,cy+9,6,6,V); }
+  if(kind==='sequence'){ for(let i=0;i<3;i++){ R(x,cx-20+i*14,cy-8,10,10,i===2?V:M); if(i<2) R(x,cx-10+i*14,cy-4,4,2,M); } R(x,cx-20,cy+10,38,4,M); }
+  if(kind==='crm'){ for(let i=0;i<3;i++){ R(x,cx-18,cy-18+i*13,36,9,i===0?V:M); R(x,cx-14,cy-15+i*13,8,3,P.ink); } }
+  if(kind==='filter'){ for(let i=0;i<5;i++) R(x,cx-20+i*4,cy-16+i*6,40-i*8,5,i===4?V:M); R(x,cx-2,cy+14,4,8,V); }
+  return c;
+}
+const POWERS=[['enrich','Enrich','Reveals unknown leads and buyer types'],['intent','Intent signal','Leads ready to buy glow on the map'],['sequence','Sequence','Missed leads get a second chance'],['crm','CRM sync','Caught leads never get lost'],['filter','ICP filter','Bad-fit leads fade out']];
+const pEl=document.getElementById('powers');
+POWERS.forEach(([k,n,d])=>{ const el=document.createElement('div'); el.className='sprite'; el.appendChild(power(k)); el.insertAdjacentHTML('beforeend',`<b>${n}</b><small>${d}</small>`); pEl.appendChild(el); });
+const cardsEl=document.getElementById('cards');
+[['enrich','ENRICH','See every buyer type tomorrow.','RARE',true],['sequence','SEQUENCE','One missed lead comes back.','COMMON',false],['filter','ICP FILTER','Bad-fit leads fade out.','COMMON',false]].forEach(([k,n,d,r,rare])=>{
+  const el=document.createElement('div'); el.className='upg'+(rare?' rare':''); el.innerHTML=`<div class="rar"><span>${r}</span><span>$4K</span></div>`; const cv=power(k); cv.style.width='72px'; el.appendChild(cv); el.insertAdjacentHTML('beforeend',`<h4>${n}</h4><p>${d}</p>`); cardsEl.appendChild(el); });
+
+/* ---------- Map (20 x 14 tiles of 16px, drawn x2) ---------- */
+function drawMap(){
+const mc=document.getElementById('map'), m=mc.getContext('2d'); m.imageSmoothingEnabled=false; m.scale(2,2);
+const T=16, MW=20, MH=14;
+function r(x,y,w,h,c){ m.fillStyle=c; m.fillRect(x,y,w,h); }
+// ground
+r(0,0,MW*T,MH*T,P.marble);
+for(let y=0;y<MH*T;y+=8) for(let x=(y/8)%2?4:0;x<MW*T;x+=8) r(x,y,1,1,P.limestone);
+// streets
+r(0,6*T,MW*T,2*T,P.limestone); r(9*T,0,2*T,MH*T,P.limestone);
+for(let x=0;x<MW*T;x+=12) r(x,7*T-1,6,2,P.marble); for(let y=0;y<MH*T;y+=12) r(10*T-1,y,2,6,P.marble);
+// building helper
+function building(tx,ty,tw,th,wall,roof,label,lit){
+  const x=tx*T,y=ty*T,w=tw*T,h=th*T;
+  r(x+3,y+3,w,h,P.ink);            // hard drop shadow
+  r(x,y,w,h,wall); r(x,y,w,6,roof);
+  for(let wy=y+22; wy<y+h-18; wy+=12) for(let wx=x+6; wx<x+w-8; wx+=12) r(wx,wy,6,6, (lit && ((wx+wy)/12)%3<1)?P.volt:P.limestone);
+  r(x+w/2-6,y+h-14,12,14,P.ink); r(x+w/2-2,y+h-8,2,2,P.volt);
+  m.font='8px "Press Start 2P", monospace'; m.textAlign='center'; m.textBaseline='middle';
+  const lw=m.measureText(label).width+8; r(x+w/2-lw/2,y+7,lw,11,P.ink); m.fillStyle=P.volt; m.fillText(label,x+w/2,y+13);
+}
+building(1,1,6,4,P.indigo,P.ink,'OFFICE',true);
+building(12,1,7,4,P.graphite,P.ink,'INBOX PLAZA',false);
+building(1,9,7,4,P.graphite,P.ink,'CLIENTS',false);
+building(14,9,5,4,P.ink,P.indigo,'GYM',true);
+// inbox plaza mailboxes
+for(let i=0;i<4;i++){ const x=(12+i*1.6)*T+6, y=5*T+2; r(x,y,8,8,P.volt); r(x,y,8,2,P.ink); r(x+3,y+8,2,4,P.ink); }
+// trees (warm monochrome)
+function tree(tx,ty){ const x=tx*T,y=ty*T; r(x+6,y+10,4,6,P.ink); r(x+2,y+2,12,10,P.graphite); r(x+4,y,8,2,P.graphite); r(x+3,y+3,3,3,P.pebble); }
+[[8,1],[8,3],[11,4],[19,6],[0,8],[8,12],[11,12],[12,9]].forEach(([a,b])=>tree(a,b));
+// people: caught leads in the client district + player + mentor
+m.save(); m.translate(0,0);
+// scale people down: draw at half size using an offscreen canvas
+function smallPerson(px,py,o,label){
+  const c=spriteCanvas(o,1); m.drawImage(c,px,py,12,15);
+  if(label){ m.font='6px "Press Start 2P", monospace'; const w=m.measureText(label).width+4; r(px+6-w/2,py-8,w,8,P.ink); m.fillStyle=label==='?'?P.limestone:P.volt; m.textAlign='center'; m.fillText(label,px+6,py-4); }
+}
+smallPerson(3.2*T, 13*T-14, {hair:'long',skin:1,shirt:P.ink}, 'CFO');
+smallPerson(5.5*T, 8.3*T, {hair:'short',unknown:true}, '?');
+smallPerson(6.6*T, 13*T-14, {hair:'bun',skin:0,shirt:P.pebble}, 'OPS');
+smallPerson(9.6*T, 9.4*T, {hair:'cap',skin:1,shirt:P.indigo}, 'YOU');
+smallPerson(4*T, 5.1*T, {hair:'bun',skin:2,shirt:P.indigo}, '!');
+smallPerson(16.5*T, 8.2*T, {hair:'short',skin:0,shirt:P.ink,tie:true}, 'RIVAL');
+m.restore();
+// item on the street
+r(13.4*T,7.1*T,10,10,P.graphite); m.strokeStyle=P.volt; m.lineWidth=1; m.strokeRect(13.4*T+.5,7.1*T+.5,9,9); r(13.4*T+4,7.1*T+2,2,6,P.volt);
+// day clock HUD strip
+r(0,0,MW*T,12,P.ink); m.font='8px "Press Start 2P", monospace'; m.textAlign='left'; m.fillStyle=P.marble; m.fillText('DAY 2 · 09:40 AM', 6, 7); m.textAlign='right'; m.fillStyle=P.volt; m.fillText('3 LEADS TO CALL', MW*T-6, 7);
+}
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(drawMap);
+})();
+</script>
