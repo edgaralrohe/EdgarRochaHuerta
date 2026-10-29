@@ -67,12 +67,12 @@
 
 | Tipo | IMPACT | DEMO | WORKFLOW | FIND MANAGER |
 |---|---|---|---|---|
-| VISIONARY | fuerte ×2 | débil ×0.5 | normal | sin efecto |
+| VISIONARY | fuerte ×2.4 | débil ×0.5 | normal | sin efecto |
 | TECHNICAL | débil | fuerte | normal | sin efecto |
 | OPERATOR | débil | normal | fuerte | sin efecto |
 | GATEKEEPER | débil | débil | débil | te pasa con el decisor (nuevo tipo) |
 
-- Daño base 10 (+1 por nivel de Gym, máx. 3). Resistencia 48 (36 si el lead tiene *intent*). Paciencia 4.
+- Daño base 10 (fuerte = 24, normal = 10, débil = 5; +1 por nivel de Gym, máx. 3). Resistencia 48 (36 si el lead tiene *intent*). Paciencia 4.
 - `RESIST` en 0 → `DEAL SIGNED`, suma el valor del deal a cash y cuota. Paciencia en 0 → `NO DEAL`.
 - Leads con datos malos que pasaron el filtro: email rebotado → la llamada no conecta (`BOUNCED`); duplicado → `DUPLICATE` (ya lo llamaste). Ambos gastan tiempo y energía.
 - El coach comenta cada turno con una frase (VT323): p. ej. *"Executives buy impact. Lead with the number."* / *"A receptionist can't buy. Find the manager."*

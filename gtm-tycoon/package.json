@@ -1,0 +1,12 @@
+{
+  "name": "gtm-tycoon",
+  "version": "1.0.0",
+  "description": "GTM Tycoon: a pixel-art sales game. Run your day like a system, not a to-do list.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "start": "python3 -m http.server 8080"
+  },
+  "license": "UNLICENSED"
+}
