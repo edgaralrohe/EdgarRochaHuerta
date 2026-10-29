@@ -15,7 +15,7 @@
 3. Llama a los leads que atrapó en **Clients** con un sistema de "batalla" de pitch por turnos.
 4. Cierra el día en la **Office**: resultados, elige 1 de 3 mejoras (las "platform powers") y lee el memo con la **nueva regla** de mañana.
 
-**Objetivo del jugador:** llegar a la cuota semanal (**$40,000** en deals firmados) al terminar el día 5.
+**Objetivo del jugador:** llegar a la cuota semanal (**$50,000** en deals firmados) al terminar el día 5.
 
 **Objetivo de producto:** enseñar, jugando, buenas prácticas de go-to-market: ICP, calidad de datos (rebotes, duplicados), tipos de comprador y cómo la plataforma (Enrich, Intent, Sequence, CRM sync, ICP filter) quita fricción. "Run your day like a system, not a to-do list."
 
@@ -47,7 +47,7 @@
 - Barra superior en el canvas: `DAY n · HH:MM AM/PM` y `n LEADS TO CALL`.
 - Los leads atrapados aparecen frente a CLIENTS como personas con etiqueta de cargo, o `?` si son desconocidos.
 - Mariana está junto a la Office al empezar el día y da la regla en un diálogo.
-- El **Rival** (corbata signal) aparece en la calle del día 2 al 5 y ofrece un *pitch-off* una vez por día.
+- El **Rival** (corbata índigo) aparece en la calle del día 2 al 5 y ofrece un *pitch-off* una vez por día.
 - HUD DOM sobre tinta: hora, `CASH`, `QUOTA`, `DAY`, barra de `ENERGY`.
 
 ### F3 — Pipeline Panic (arcade, Inbox Plaza)
@@ -57,11 +57,11 @@
   - Bueno → al pipeline, pop-up `GOOD LEAD` (volt), suma combo. Cada 3 seguidos: `x3 COMBO` (+5 energía).
   - Malo → pop-up en signal (`NOT ICP`, `TOO SMALL`, `TOO BIG`, `BOUNCED`, `DUPLICATE`), −10 energía, rompe el combo.
   - No atrapar no penaliza.
-- Íconos según la art bible: bolsa volt = tienda online (bueno); banco/fábrica/hospital = fuera de ICP; tamaño del ícono = tamaño de empresa; insignia `!` parpadeante = rebotado; copia fantasma detrás = duplicado; caja `?` = desconocido (se revela a mitad de la caída o de inmediato con Enrich).
+- Íconos según la art bible: bolsa volt = tienda online (bueno); banco/fábrica/hospital = fuera de ICP; tamaño del ícono = tamaño de empresa; insignia `!` parpadeante en signal = rebotado (único uso de `!`); copia fantasma detrás = duplicado; caja `?` = desconocido (se revela a mitad de la caída o de inmediato con Enrich).
 - Pop-ups de máximo 3 palabras, en mayúsculas.
 
 ### F4 — Llamadas (batalla por turnos, Clients)
-- Lista de leads por llamar; elegir uno abre la **tarjeta de batalla**: nombre, cargo, insignia de tipo (`$ VISIONARY`, `# TECHNICAL`, `+ OPERATOR`, `! GATEKEEPER` o `TYPE ???`), `PAT` (paciencia en pips) y barra `RESIST n/48`.
+- Lista de leads por llamar; elegir uno abre la **tarjeta de batalla**: nombre, cargo, insignia de tipo (`$ VISIONARY`, `# TECHNICAL`, `+ OPERATOR`, `= GATEKEEPER` o `TYPE ???`), `PAT` (paciencia en pips) y barra `RESIST n/48`.
 - Cada llamada cuesta **10 de energía** y **+30 min**. Sin energía suficiente no se puede llamar.
 - 4 movimientos: `IMPACT`, `DEMO`, `WORKFLOW`, `FIND MANAGER`. Cada uno resta 1 de paciencia.
 
@@ -79,7 +79,7 @@
 - Tipo desconocido (`TYPE ???`): se revela después del primer movimiento.
 
 ### F5 — Rival pitch-off
-- Batalla contra un prospecto con tipo visible; la barra del rival avanza 12 por turno. Si llega a 48 antes de que tú cierres: `RIVAL SIGNED`. Si cierras primero: deal de $3,000.
+- Batalla contra un prospecto con tipo visible; la barra del rival avanza 12 por turno. Si llega a 48 antes de que tú cierres: `RIVAL SIGNED`. Si cierras primero: deal de $2,500.
 - Una vez por día, días 2–5.
 
 ### F6 — Gym
@@ -96,7 +96,7 @@
 | Power | Rareza | Precio | Efecto |
 |---|---|---|---|
 | ENRICH | rare | $4K | Revela cajas `?` y tipos de comprador desde el inicio |
-| INTENT SIGNAL | rare | $4K | Los leads con intención brillan (arcade/mapa) y van primero en la lista |
+| INTENT | rare | $4K | Los leads con intención brillan (arcade/mapa) y van primero en la lista |
 | SEQUENCE | common | $2K | Un lead que se queda sin paciencia vuelve una vez como `FOLLOW-UP` |
 | CRM SYNC | common | $2K | Los leads no llamados pasan al día siguiente |
 | ICP FILTER | common | $2K | Los leads fuera de ICP/tamaño se ven atenuados y atraparlos no cuesta energía |
@@ -171,8 +171,10 @@ Title ─▶ Map (Mariana: regla del día) ─▶ Inbox Plaza ─▶ Pipeline Pa
 | ID | Requisito |
 |---|---|
 | NFR1 | **Paleta estricta**: solo los 8 tokens + 3 tonos de piel. Sin gradientes, sin sombras suaves, sin grises fríos. Sombras duras de 4 px. |
-| NFR2 | **Volt** solo para bueno/activo/listo; **signal** solo para errores. Todo color acompañado de forma o palabra. |
-| NFR3 | Tipografías: Press Start 2P (HUD, botones, pop-ups, ≤3 palabras en arcade), VT323 (diálogos, una frase por caja), Fraunces 550 + Hanken Grotesk (desk layer). |
+| NFR2 | **Volt** solo para bueno/activo/listo; **signal** solo para errores. Todo color acompañado de forma o palabra. Letreros del mapa en volt solo si el lugar está disponible ahora; etiquetas de personas en marble (volt solo para leads con intención si tienes INTENT). Ventanas y puertas sin volt. |
+| NFR2b | **Volt nunca como texto ni contorno sobre crema** (contraste ≈1.1:1). Sobre crema solo como relleno con texto tinta; como texto, solo sobre tinta. El foco en la desk layer es tinta. |
+| NFR2c | **Un símbolo, un significado:** `$` visionary / IMPACT, `#` technical / DEMO, `+` operator / WORKFLOW, `=` gatekeeper / FIND MANAGER, `!` solo email rebotado, `?` solo desconocido. Mariana se etiqueta con su nombre. |
+| NFR3 | Tipografías: Press Start 2P (HUD, botones, pop-ups, ≤3 palabras en arcade; **mínimo 8 px lógicos en el canvas = 16 px reales**), VT323 (diálogos, una frase por caja), Fraunces 550 + Hanken Grotesk (desk layer). |
 | NFR4 | Animaciones en `steps()` / por frames. Con reduced motion: sin sacudidas, sin parpadeos, sin flash. |
 | NFR5 | 60 FPS en un laptop promedio; canvas con `image-rendering: pixelated` y `imageSmoothingEnabled=false`. |
 | NFR6 | Responsivo: jugable desde 360 px de ancho, sin scroll horizontal; controles táctiles para todo. |
@@ -181,3 +183,47 @@ Title ─▶ Map (Mariana: regla del día) ─▶ Inbox Plaza ─▶ Pipeline Pa
 | NFR9 | Sin contenido de Pokémon (nombres, criaturas, bolas, pasto alto, sonidos, pantallas), sin logo/símbolo/capturas de Apollo, sin datos reales: todas las empresas y personas son ficticias. |
 | NFR10 | Voz: corta, directa, segura; sin signos de exclamación de hype; nunca culpa al jugador. |
 | NFR11 | Cobertura: toda la lógica pura con tests unitarios (`node --test`), en verde antes de cada commit. |
+
+---
+
+## 7. Anexo — reglas, audio, animación, controles e idioma (revisión v1.1)
+
+Esta sección cubre lo que la guía visual no definía.
+
+### 7.1 Reglas y economía
+- **Se gana** si al final del día 5 los ingresos firmados son ≥ **$50,000**. Grados: S ≥ $75K, A ≥ $50K, B ≥ $35K, C el resto. **No se pierde** antes: la semana siempre termina.
+- **Valor de un deal:** $1,000–$2,500 (aleatorio por lead). Rival: $2,500.
+- **Daño por enfoque:** fuerte 24, normal 10, débil 5, `FIND MANAGER` 0 (salvo con gatekeeper: cambia al decisor). +1 por nivel de Gym.
+- **Energía:** 100 por día (+20 con COFFEE). Llamada −10, atrapar un lead malo −10 (0 con ICP FILTER si es mala industria/tamaño), cada 3 buenos seguidos +5.
+- **Tiempo:** 9:00 AM–6:00 PM. Arcade +90 min, llamada +30, Gym +60.
+- **Cash vs. cuota:** comprar mejoras gasta cash pero no reduce el progreso de cuota.
+- Balance validado con simulación: experto ≈ $77K, bueno ≈ $54K (77% llega), promedio ≈ $24K sin mejoras.
+
+### 7.2 Audio
+- Solo blips originales de onda cuadrada (WebAudio), volumen bajo, sin música. Eventos: seleccionar, lead bueno, lead malo, golpe/fuerte/débil, deal firmado (arpegio de 4 notas), sin deal, paso.
+- Toggle `Sound` en el título, guardado por navegador. Nada inspirado en sonidos de otras franquicias.
+
+### 7.3 Tiempos de animación (todo en pasos)
+- Paso en el mapa: 0.14 s por tile, en 4 incrementos de 4 px.
+- Pop-ups del arcade: 0.9 s, suben en 4 pasos de 6 px.
+- Parpadeo de `!` rebotado y ▼ del diálogo: 2 estados, 1 s (`steps(2)`).
+- Sacudida al atrapar un lead malo: 0.2 s ±2 px. Destello en golpe fuerte: 0.15 s.
+- Con reduced motion (sistema o toggle): sin sacudida, sin destello, sin parpadeo, sin rebote al caminar.
+
+### 7.4 Resolución y controles
+- Resolución base lógica **320×224** (20×14 tiles de 16 px) dibujada ×2 en un canvas de 640×448 que escala al ancho disponible (mínimo 360 px).
+- **Teclado:** flechas/WASD mover, Enter/Espacio/Z confirmar, 1–4 elegir pitch, Tab para navegar botones.
+- **Táctil/mouse:** tocar un lugar o persona en el mapa camina hasta ahí (BFS); en el arcade se arrastra o se toca para mover la bandeja; todos los menús son botones grandes.
+
+### 7.5 Idioma
+- **El juego está en inglés** (UI, diálogos, memos). La documentación interna (spec, plan, tareas) está en español.
+
+### 7.6 Decisiones tomadas (v1.1)
+| Pregunta | Decisión |
+|---|---|
+| Idioma | Inglés |
+| Mecánica del arcade | Bandeja que atrapa (no tocar leads): enseña "dejar caer" los malos |
+| Enfoques y meta | 4 enfoques; 5 días; cuota $50K |
+| Rival y Gym | Entran en v1 (son pequeños y reusan el motor de batalla) |
+| Dónde vive | `gtm-tycoon/` en este repo, autocontenido para moverlo a un repo propio sin cambios |
+| Marca | `BRAND_MODE=false`; el juego no muestra el nombre ni el logo de Apollo. **Antes de publicar con la paleta y el tono de Apollo, pedir su aprobación.** |

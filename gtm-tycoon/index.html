@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GTM Tycoon</title>
+  <meta name="description" content="A pixel-art sales game. Find the right leads, pitch the right people, and hit quota in five days.">
+  <meta name="theme-color" content="#1a1a1a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,550&family=Hanken+Grotesk:wght@400;500;700&family=Press+Start+2P&family=VT323&family=IBM+Plex+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <!-- World layer: HUD, canvas stage and the panel under it (dialog, menus, pitch moves). -->
+    <section id="world" class="world" hidden>
+      <header id="hud" class="hud" aria-label="Status">
+        <span id="hud-time">09:00 AM</span>
+        <span>DAY <span id="hud-day" class="v">1</span></span>
+        <span>CASH <span id="hud-cash" class="v">$0</span></span>
+        <span>QUOTA <span id="hud-quota">$0/$40K</span></span>
+        <span class="hud-energy">ENERGY <span class="bar" role="meter" aria-label="Energy" aria-valuemin="0" id="hud-energy-bar"><i id="hud-energy"></i></span></span>
+      </header>
+      <div id="stage" class="stage">
+        <canvas id="canvas" width="640" height="448" aria-label="Game world"></canvas>
+        <div id="overlay" class="overlay"></div>
+      </div>
+      <div id="panel" class="panel" aria-live="polite"></div>
+    </section>
+
+    <!-- Desk layer: title, results, upgrades, memo, final report. -->
+    <section id="desk" class="desk" hidden></section>
+  </main>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

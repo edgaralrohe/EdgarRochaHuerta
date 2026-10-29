@@ -43,7 +43,7 @@ export function personGrid(o) {
 const SHIRT = { ink: P.ink, graphite: P.graphite, pebble: P.pebble, marble: P.marble, indigo: P.indigo };
 
 function personColors(o) {
-  return { k: P.ink, s: SKIN[o.skin || 0], m: P.graphite, h: o.hairC || P.ink, w: SHIRT[o.shirt] || o.shirt || P.graphite, c: P.marble, u: P.pebble, q: P.marble, p: P.volt, t: P.signal };
+  return { k: P.ink, s: SKIN[o.skin || 0], m: P.graphite, h: o.hairC || P.ink, w: SHIRT[o.shirt] || o.shirt || P.graphite, c: P.marble, u: P.pebble, q: P.marble, p: P.volt, t: P.indigo };
 }
 
 const cache = new Map();
@@ -94,9 +94,9 @@ export function drawLeadIcon(x, lead, cx, cy, u, opts = {}) {
     [-3.6, -0.8, 2].forEach(o => R(x, cx + u * o, cy + u, u * 1.6, u * 1.6, P.ink));
   }
   if (ind === 'hospital') {
-    // Neutral cross: signal is reserved for mistakes, so the cross is graphite.
-    R(x, cx - u * 5, cy - u * 4, u * 10, u * 9, P.marble);
-    R(x, cx - u, cy - u * 3, u * 2, u * 5, P.graphite); R(x, cx - u * 2.5, cy - u * 1.5, u * 5, u * 2, P.graphite);
+    // Marble cross on graphite: signal is reserved for mistakes.
+    R(x, cx - u * 5, cy - u * 4, u * 10, u * 9, P.graphite);
+    R(x, cx - u, cy - u * 3, u * 2, u * 6, P.marble); R(x, cx - u * 2.5, cy - u * 1.5, u * 5, u * 2, P.marble);
   }
   if (lead.bounced && (opts.blinkOn ?? true)) {
     R(x, cx + u * 2, cy - u * 6.5, u * 3.2, u * 3.2, P.signal);

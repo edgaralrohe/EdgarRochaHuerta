@@ -1,7 +1,7 @@
 // The platform's features show up as power-ups. Generic icons until BRAND_MODE is approved.
 export const UPGRADES = [
   { id: 'enrich', name: 'ENRICH', rarity: 'rare', cost: 4000, desc: 'See every buyer type and blank lead.' },
-  { id: 'intent', name: 'INTENT SIGNAL', rarity: 'rare', cost: 4000, desc: 'Leads ready to buy glow and go first.' },
+  { id: 'intent', name: 'INTENT', rarity: 'rare', cost: 4000, desc: 'Leads ready to buy glow and go first.' },
   { id: 'script', name: 'CALL SCRIPT', rarity: 'rare', cost: 3000, desc: 'One more turn of patience per call.' },
   { id: 'sequence', name: 'SEQUENCE', rarity: 'common', cost: 2000, desc: 'A lost call comes back once.' },
   { id: 'crm', name: 'CRM SYNC', rarity: 'common', cost: 2000, desc: 'Uncalled leads carry to tomorrow.' },

@@ -81,3 +81,14 @@ Sin hype con signos de exclamación y sin culpar al jugador.
 - Logo o símbolo de Apollo y capturas del producto antes de la aprobación ("the platform").
 - Gradientes, sombras suaves o grises fríos.
 - Datos reales.
+
+---
+
+## Cambios v1.1 (tras la revisión)
+- **Signal solo errores:** la corbata del Rival pasa a **índigo**; la cruz del hospital es **marble sobre graphite**.
+- **Volt solo para lo usable ahora:** letreros del mapa y buzones se encienden solo cuando el lugar está disponible; ventanas y puertas sin volt; etiquetas de personas en marble (`YOU` sigue en volt).
+- **Un símbolo, un significado:** `=` GATEKEEPER (y el pitch FIND MANAGER), `!` solo email rebotado, Mariana con su nombre.
+- **Contraste:** volt nunca como texto ni contorno sobre crema (≈1.1:1); solo relleno con texto tinta, o texto sobre tinta. Foco de teclado en tinta en la desk layer.
+- **Tamaño mínimo:** Press Start 2P a 8 px lógicos (16 px reales) en el canvas.
+- **Nombres:** el power se llama **INTENT** (no "Intent signal") para no chocar con el color Signal.
+- Reglas, audio, tiempos de animación, controles, resolución e idioma: ver `spec.md` §7.

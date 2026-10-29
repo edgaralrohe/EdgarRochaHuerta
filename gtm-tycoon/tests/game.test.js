@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { newGame, startDay, recordCatch, canCall, beginCall, resolveCall, beginRival, resolveRival,
   gymDrill, endDay, nextDay, summarizeDay, finalReport, numberWord } from '../src/core/game.js';
-import { QUOTA } from '../src/core/config.js';
+import { QUOTA, RIVAL_DEAL } from '../src/core/config.js';
 
 const good = (id = 'a', extra = {}) => ({ id, company: 'Northwind Shop', industry: 'store', size: 'mid', bounced: false, dupeOf: null, mystery: false, intent: false, value: 4000,
   buyer: { name: 'Lucia Rios', title: 'CFO', type: 'visionary' }, ...extra });
@@ -106,7 +106,7 @@ test('rival pitch-off once per day', () => {
   const s = newGame(1); s.day = 2;
   assert.equal(beginRival(s).ok, true);
   resolveRival(s, 'won');
-  assert.equal(s.revenue, 3000); assert.equal(s.today.rivalDone, true);
+  assert.equal(s.revenue, RIVAL_DEAL); assert.equal(s.today.rivalDone, true);
   assert.equal(beginRival(s).ok, false);
 });
 

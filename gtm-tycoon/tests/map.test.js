@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { MAP_W, MAP_H, BUILDINGS, DOORS, isWalkable, doorAt, findPath, PLAYER_START, NPC } from '../src/core/map.js';
+import { MAP_W, MAP_H, BUILDINGS, DOORS, CLIENT_SPOTS, isWalkable, doorAt, findPath, PLAYER_START, NPC } from '../src/core/map.js';
 
 test('map is 20x14 tiles', () => { assert.equal(MAP_W, 20); assert.equal(MAP_H, 14); });
 
@@ -47,4 +47,11 @@ test('extra blocked tiles are respected; unreachable returns null', () => {
 
 test('npc spots are walkable', () => {
   for (const n of Object.values(NPC)) assert.equal(isWalkable(n.x, n.y), true);
+});
+
+test('client spots are walkable, unique and two tiles apart on a row', () => {
+  const keys = CLIENT_SPOTS.map(([x, y]) => `${x},${y}`);
+  assert.equal(new Set(keys).size, keys.length);
+  for (const [x, y] of CLIENT_SPOTS) assert.equal(isWalkable(x, y), true);
+  for (const [x, y] of CLIENT_SPOTS) assert.ok(!CLIENT_SPOTS.some(([a, b]) => b === y && Math.abs(a - x) === 1));
 });

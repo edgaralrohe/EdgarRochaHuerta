@@ -52,7 +52,7 @@ export function generateLeads(rng, day, count) {
       dupeOf: null,
       mystery: cfg.mystery && rng.chance(0.2),
       intent: rng.chance(0.3),
-      value: rng.int(25, 55) * 100,
+      value: rng.int(10, 25) * 100,
       buyer: makeBuyer(rng, cfg),
     });
   }

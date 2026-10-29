@@ -10,7 +10,7 @@ export const BRAND_MODE = false;
 export const PLATFORM_NAME = 'the platform';
 
 export const DAYS = 5;
-export const QUOTA = 40000;
+export const QUOTA = 50000;
 export const DAY_START = 9 * 60;
 export const DAY_END = 18 * 60;
 
@@ -31,4 +31,4 @@ export const BASE_RESIST = 48;
 export const INTENT_RESIST = 36;
 export const BASE_PATIENCE = 4;
 export const RIVAL_STEP = 12;
-export const RIVAL_DEAL = 3000;
+export const RIVAL_DEAL = 2500;

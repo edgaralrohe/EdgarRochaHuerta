@@ -100,3 +100,8 @@ test('gatekeepers appear from day 3', () => {
 test('good leads carry a positive deal value', () => {
   for (const l of generateLeads(createRng(1), 1, 30)) assert.ok(l.value >= 1000);
 });
+
+test('every title has a short map tag of at most 3 letters', async () => {
+  const { TITLES, TITLE_TAG } = await import('../src/core/names.js');
+  for (const t of Object.values(TITLES).flat()) { assert.ok(TITLE_TAG[t], t); assert.ok(TITLE_TAG[t].length <= 3); }
+});

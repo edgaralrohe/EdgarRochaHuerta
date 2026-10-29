@@ -17,6 +17,12 @@ export const TITLES = {
   gatekeeper: ['Purchasing', 'Front Desk', 'Assistant', 'Procurement'],
 };
 
+// Three-letter tags for map labels, so neighbours never overlap.
+export const TITLE_TAG = {
+  CFO: 'CFO', CEO: 'CEO', Founder: 'FDR', 'VP Growth': 'VP', 'Head of IT': 'IT', CTO: 'CTO', 'Eng Lead': 'ENG', 'IT Manager': 'IT',
+  'Ops Lead': 'OPS', COO: 'COO', 'Ops Manager': 'OPS', 'Store Ops': 'OPS', Purchasing: 'BUY', 'Front Desk': 'DSK', Assistant: 'AST', Procurement: 'PRC',
+};
+
 export function personName(rng) {
   return `${rng.pick(FIRST)} ${rng.pick(LAST)}`;
 }

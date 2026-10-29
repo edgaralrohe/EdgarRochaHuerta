@@ -6,7 +6,7 @@ export const ARCADE_H = 224;
 export const CATCHER_Y = 196;
 const CATCHER_W = 44;
 const CATCHER_SPEED = 300;
-const FALL_SPEED = 62;
+const FALL_SPEED = 76;
 const REVEAL_AT = ARCADE_H * 0.4;
 const SCALE = { tiny: 0.55, mid: 1, giant: 1.35 };
 

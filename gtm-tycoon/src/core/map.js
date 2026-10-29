@@ -22,7 +22,7 @@ export const NPC = {
   rival: { x: 16, y: 8 },
 };
 // Where caught leads stand, in front of the Clients building.
-export const CLIENT_SPOTS = [[1, 8], [2, 8], [3, 8], [5, 8], [6, 8], [7, 8], [1, 13], [2, 13], [6, 13], [7, 13]];
+export const CLIENT_SPOTS = [[1, 8], [3, 8], [5, 8], [7, 8], [1, 13], [3, 13], [6, 13], [8, 13]];
 
 const key = (x, y) => `${x},${y}`;
 const SOLID = new Set();
